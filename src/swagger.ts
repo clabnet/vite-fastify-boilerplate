@@ -19,11 +19,12 @@ const swaggerDefinition: SwaggerDefinition = {
 }
 
 const apiDirectory = join(__dirname, 'routes')
+console.log('apiDirectory: ', apiDirectory)
 
 const options: swaggerJsdoc.Options = {
   swaggerDefinition,
   // Path to the API docs
-  apis: [`${apiDirectory}/**/*.js`, `${apiDirectory}/**/*.ts`]
+  apis: [`${apiDirectory}/**/*.ts`]
 }
 
 export async function initSwagger(app: FastifyInstance) {
@@ -49,7 +50,7 @@ export async function initSwagger(app: FastifyInstance) {
   })
 
   await app.register(fastifySwaggerUi, {
-    routePrefix: '/documentation',
+    routePrefix: '/swagger',
     uiConfig: {
       docExpansion: 'full',
       deepLinking: false

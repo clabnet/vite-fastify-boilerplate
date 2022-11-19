@@ -16,7 +16,7 @@ export default defineConfig({
       adapter: 'fastify',
 
       // tell the plugin where is your project entry
-      appPath: './src/index.ts',
+      appPath: './src/server.ts',
 
       // Optional, default: 'viteNodeApp'
       // the name of named export of you app from the appPath file

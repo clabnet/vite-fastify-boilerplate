@@ -2,12 +2,15 @@
   "name": "vite-fastify-boilerplate",
   "version": "0.0.4",
   "description": "Fastify boilerplate with Vite & Vitest",
-  "main": "build/server.js",
+  "main": "dist/server.mjs",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development tsx watch src",
-    "build": "vite build --outDir build --ssr src/server.ts",
+    "compile-schemas": "json2ts -i src/schemas -o src/types",
+    "dev:watch": "cross-env NODE_ENV=development tsx watch src/server.ts",
+    "dev": "pnpm compile-schemas && pnpm dev:watch",
+    "copy:assets": "cpy 'src/generated/*.json' dist/generated",
+    "build": "vite build --outDir dist --ssr src/server.ts",
     "format": "prettier --config .prettierrc \"src/**/*.{js,json,ts,css,scss,vue,html,md}\" --write",
-    "start": "yarn build && node build/index.mjs",
+    "start": "yarn build && node dist/server.mjs",
     "test": "vitest run",
     "test:ui": "vitest --ui",
     "coverage": "vitest --coverage"
@@ -23,6 +26,7 @@
   "author": "Emmanuel Salomon <emmanuel.salomon@gmail.com> (https://github.com/ManUtopiK)",
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "@fastify/cors": "8.2.0",
     "@fastify/autoload": "^5.0.0",
     "@fastify/env": "4.1.0",
     "@fastify/sensible": "^5.0.0",
@@ -51,6 +55,7 @@
     "axios": "^0.26.1",
     "cross-env": "^7.0.3",
     "supertest": "6.2.4",
-    "tsx": "^3.9.0"
+    "tsx": "^3.9.0",
+    "json-schema-to-typescript": "11.0.2"
   }
 }
