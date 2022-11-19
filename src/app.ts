@@ -1,13 +1,17 @@
-import { fastify as Fastify, FastifyServerOptions } from 'fastify'
+import type { FastifyInstance } from 'fastify'
+import Fastify from 'fastify'
+import { usersData } from '../mockData'
 
-export default (opts?: FastifyServerOptions) => {
-  const fastify = Fastify(opts)
+const app: FastifyInstance = Fastify({
+  logger: process.env.NODE_ENV === 'development'
+})
 
-  /* Your code here. Hello world example: */
+app.get('/', async () => {
+  return { hello: 'world' }
+})
 
-  fastify.get('/', async (request, reply) => {
-    return { hello: 'world' }
-  })
+app.get('/users', async () => {
+  return usersData
+})
 
-  return fastify
-}
+export default app

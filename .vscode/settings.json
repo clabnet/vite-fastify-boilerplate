@@ -13,5 +13,8 @@
   },
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "testing.automaticallyOpenPeekView": "never",
+  "vitest.commandLine": "pnpm test",
+  "vitest.enable": true
 }
