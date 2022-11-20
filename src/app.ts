@@ -1,12 +1,12 @@
-import type { FastifyInstance } from 'fastify'
-import Fastify from 'fastify'
-
-import type { AutoloadPluginOptions } from '@fastify/autoload'
 import AutoLoad from '@fastify/autoload'
-import type { FastifyPluginAsync } from 'fastify'
-
+import Fastify from 'fastify'
+import fastifyPrintRoutes from 'fastify-print-routes'
 import { dirname, join, resolve } from 'path'
 import { fileURLToPath } from 'url'
+import type { FastifyInstance } from 'fastify'
+
+import type { AutoloadPluginOptions } from '@fastify/autoload'
+import type { FastifyPluginAsync } from 'fastify'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -20,6 +20,9 @@ const app: FastifyPluginAsync<AppOptions> = async (
   opts
 ): Promise<void> => {
   // Place here your custom code!
+
+  // prints all available routes
+  fastify.register(fastifyPrintRoutes)
 
   // This loads all plugins defined in plugins
   // those should be support plugins that are reused
