@@ -19,10 +19,6 @@ const app: FastifyInstance = Fastify({
 // Register your application as a normal plugin.
 void app.register(import('./app'))
 
-// Init Swagger
-// app.register(fastifySwagger, openapiOption)
-// app.register(fastifySwaggerUi, fastifySwaggerUIDefinition)
-
 // Delay is the number of milliseconds for the graceful close to finish
 const closeListeners = closeWithGrace({ delay: 500 }, async (opts: any) => {
   if (opts.err) {

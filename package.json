@@ -6,11 +6,12 @@
   "scripts": {
     "compile-schemas": "json2ts -i src/schemas -o src/types",
     "dev:watch": "cross-env NODE_ENV=development tsx watch src/server.ts",
-    "dev": "pnpm compile-schemas && pnpm dev:watch",
+    "dev": "pnpm dev:watch",
+    "xxxdev": "pnpm compile-schemas && pnpm dev:watch",
     "copy:assets": "cpy 'src/generated/*.json' dist/generated",
     "build": "vite build --outDir dist --ssr src/server.ts",
     "format": "prettier --config .prettierrc \"src/**/*.{js,json,ts,css,scss,vue,html,md}\" --write",
-    "start": "yarn build && node dist/server.mjs",
+    "tart": "yarn build && node dist/server.mjs",
     "test": "vitest run",
     "test:ui": "vitest --ui",
     "coverage": "vitest --coverage"
@@ -30,7 +31,7 @@
     "@fastify/cors": "8.2.0",
     "@fastify/env": "4.1.0",
     "@fastify/jwt": "^6.3.2",
-    "@fastify/sensible": "^5.0.0",
+    "@fastify/sensible": "^5.1.1",
     "@fastify/vite": "^3.0.3",
     "close-with-grace": "1.1.0",
     "crypto-js": "^4.1.1",
@@ -40,15 +41,15 @@
     "fastify-multer": "^2.0.3",
     "fastify-plugin": "^4.0.0",
     "fastify-print-routes": "^2.0.6",
+    "fluent-json-schema": "^4.0.0",
     "glob": "8.0.3",
     "mongodb": "^4.10.0",
     "openapi-types": "^12.0.2",
     "pino": "^8.7.0",
     "pino-pretty": "^9.1.1",
-    "swagger-jsdoc": "6.2.5"
+    "desm": "^1.3.0"
   },
   "devDependencies": {
-    
     "@fastify/swagger": "^8.1.0",
     "@fastify/swagger-ui": "^1.2.0",
     "@types/node": "^18.11.9",
